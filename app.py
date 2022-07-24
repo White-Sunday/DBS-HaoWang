@@ -16,7 +16,7 @@ import joblib
 # In[50]:
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='./static/templates', static_folder='./static')
 
 
 # In[51]:
