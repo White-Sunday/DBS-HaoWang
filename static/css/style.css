@@ -1,0 +1,96 @@
+/*https://www.cnblogs.com/hellocd/p/10443237.html关于flex的有用网站*/
+
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family:  'Times New Roman', sans-serif;
+    /*定义font-family时,最好在最后加一个sans-serif,
+    这样如果所列出的字体都不能用，则默认的sans-serif字体能保证调用*/
+}
+
+
+body
+{
+    background: #0a2a43;
+    min-height: 100vh;
+    /*min-height 属性设置元素的最小高度*/
+}
+
+section
+{
+    position: relative;
+    /*相对定位*/
+    width: 100%;
+    height: 100vh;
+    /*height:100vh == height:100%;
+    但是当元素没有内容时候，设置height:100%，
+    该元素不会被撑开，此时高度为0，
+    但是设置height:100vh，该元素会被撑开屏幕高度一致。*/
+    overflow: hidden;
+    /*溢出隐藏，超出宽度或高度不给展现*/
+    display: flex;
+    /*Flexible Box弹性布局
+    2009年，W3C提出了一种新的方案—-Flex布局，
+    可以简便、完整、响应式地实现各种页面布局*/
+    justify-content: center;
+    /*justify-content属性定义了项目在主轴上的对齐方式
+    居中对齐*/
+    align-items: center;
+    /*align-items 属性定义flex子项在flex容器的
+    当前行的侧轴（纵轴）方向上的对齐方式,这里是居中对齐*/
+    /*这里弹窗布局应该是没啥用的*/
+}
+
+section::before
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #0a2a43, transparent);
+    /*从下到上的透明渐变 两个颜色参数，其中一个是透明（transparent）*/
+    z-index: 1;
+    /*改变透明渐变的出现顺序*/
+}
+section::after
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a2a43;
+    z-index: 1;
+    mix-blend-mode: color;
+    /*与背景颜色混合（或层叠关系的元素）， 颜色模式*/
+}
+
+section img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /*保持原有尺寸比例，但部分内容可能被剪切*/
+}
+
+#text
+{
+    position: absolute;
+    color:#fff;
+    font-size: 2em;
+    /*em相对父元素字体大小的几倍*/
+    z-index: 10000;
+}
+
+#road
+{
+    z-index: 1;
+}
+
+/*z-index搞得还不是很清楚*/
